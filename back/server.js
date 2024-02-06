@@ -1,11 +1,12 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
-
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const db = new sqlite3.Database('database.db');
 
 app.use(express.json());
+app.use(cors());
 
 app.post('/cheques', (req, res) => {
   const { numeroCheque, nomPrenom, montantChiffre, montantLettres, codeBanque, numeroCompteRecepteur } = req.body;
