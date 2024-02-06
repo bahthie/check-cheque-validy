@@ -1,0 +1,6 @@
+projectKey=projet_bank_sam
+serverUrl=http://localhost:9000
+serverVersion=10.3.0.82913
+dashboardUrl=http://localhost:9000/dashboard?id=projet_bank_sam
+ceTaskId=AY1-4ydD7M-d1OP9yysu
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AY1-4ydD7M-d1OP9yysu

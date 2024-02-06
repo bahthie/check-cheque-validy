@@ -7,13 +7,16 @@ import View from './components/view-checks';
 
 function App() {
   const [checkNumber, setCheckNumber] = useState("");
-  const [handleChequeView, setHandleChequeView] = useState(true);
+  const [handleChequeView, setHandleChequeView] = useState(false);
   const [name, setName] = useState("");
   const [amountNumber, setAmountNumber] = useState("");
   const [amountWords, setAmountWords] = useState("");
   const [bankCode, setBankCode] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
 
+  const switchVue = (): void => {
+    setHandleChequeView(true);
+  };
   const sendDataPost = (): void => {
     // Les données à envoyer
     const data = {
@@ -39,11 +42,10 @@ function App() {
         setAccountNumber("");
         alert("Enregistré !")
 
-        setHandleChequeView(true);
+        // setHandleChequeView(true);
         // Traitez la réponse ici si nécessaire
       })
       .catch(error => {
-        setHandleChequeView(true);
         console.error('Erreur lors de la requête POST :', error);
         alert('Erreur lors de la requête POST :' + error)
       });
@@ -55,6 +57,18 @@ function App() {
     handleChequeView ? <View/> : <>
       <div className="bg-blue-500 p-4 text-center">
         <h1 className="text-white text-2xl font-bold">Dépôt de chèque</h1>
+        {/* button
+              className={`font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${isFormValid ? 'bg-blue-500 hover:bg-blue-700 text-white' : 'bg-gray-500 text-gray-200 cursor-not-allowed'}`}
+              type="submit"
+              id="submitButton"
+              onClick={sendDataPost}
+              disabled={!isFormValid}
+            >
+              Soumettre */}
+              <button id="switchVue"
+              onClick={switchVue}>
+                Voir les chèques enregistrés
+              </button>
       </div>
       <div className='flex-col m-auto w-11/12'>
         <div className="container mx-auto p-4 w-1/2">
@@ -116,7 +130,7 @@ function App() {
             </div>
             <button
               className={`font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${isFormValid ? 'bg-blue-500 hover:bg-blue-700 text-white' : 'bg-gray-500 text-gray-200 cursor-not-allowed'}`}
-              type="submit"
+              // type="submit"
               id="submitButton"
               onClick={sendDataPost}
               disabled={!isFormValid}
